@@ -357,7 +357,7 @@ public class Controller {
     }
 
     public void searchByid() {
-        scanner.nextLine();
+
         System.out.print("please enter the id: ");
         scanner.nextLine();
         String keyid = scanner.nextLine();
@@ -366,13 +366,13 @@ public class Controller {
             System.out.println("No result!");
             searchByid();
         } else {
-            System.out.printf("%-5s%-15s%-30s%-35s%-10s\n", "#", "MA HV", "HO TEN", "EMAIL", "SCORE");
+            System.out.printf("%-15s%-30s%-35s%-10s\n", "MA HV", "HO TEN", "EMAIL", "SCORE");
             this.listStudentObject.get(isidExist).displayStudent();
         }
     }
 
     public void searchByName() {
-        scanner.nextLine();
+
         System.out.print("please enter the name: ");
         scanner.nextLine();
         String keyName = scanner.nextLine();
@@ -381,7 +381,7 @@ public class Controller {
             System.out.println("No result!");
             searchByName();
         } else {
-            System.out.printf("%-5s%-15s%-30s%-35s%-10s\n", "#", "MA HV", "HO TEN", "EMAIL", "SCORE");
+            System.out.printf("%-15s%-30s%-35s%-10s\n", "MA HV", "HO TEN", "EMAIL", "SCORE");
             for (int i = 0; i < indexOfName.size(); i++) {
                 System.out.printf("%-5s", i + 1);
                 this.listStudentObject.get(i).displayStudent();
@@ -390,7 +390,7 @@ public class Controller {
     }
 
     public void searchByMail() {
-        scanner.nextLine();
+
         System.out.print("please enter the email: ");
         scanner.nextLine();
         String keyMail = scanner.nextLine();
@@ -399,13 +399,12 @@ public class Controller {
             System.out.println("No result!");
             searchByMail();
         } else {
-            System.out.printf("%-5s%-15s%-30s%-35s%-10s\n", "#", "MA HV", "HO TEN", "EMAIL", "SCORE");
+            System.out.printf("%-15s%-30s%-35s%-10s\n", "MA HV", "HO TEN", "EMAIL", "SCORE");
             this.listStudentObject.get(isMailExist).displayStudent();
         }
     }
 
     public void searchByScore() {
-        scanner.nextLine();
         System.out.print("please enter the score: ");
         scanner.nextLine();
         int keyScore = scanner.nextInt();
@@ -415,7 +414,7 @@ public class Controller {
             System.out.println("No result!");
             searchByScore();
         } else {
-            System.out.printf("%-5s%-15s%-30s%-35s%-10s\n", "#", "MA HV", "HO TEN", "EMAIL", "SCORE");
+            System.out.printf("%-15s%-30s%-35s%-10s\n", "MA HV", "HO TEN", "EMAIL", "SCORE");
             for (int i = 0; i < indexOfScore.size(); i++) {
                 System.out.printf("%-5s", i + 1);
                 this.listStudentObject.get(i).displayStudent();
