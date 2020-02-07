@@ -76,6 +76,7 @@ public class Controller {
             }
             case 13: {
                 displayStudent();
+                showMenu();
                 break;
             }
 
@@ -91,7 +92,7 @@ public class Controller {
             this.listStudentObject.get(i).displayStudent();
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------");
-        showMenu();
+
     }
 
     public void sortByScore() {
@@ -266,11 +267,13 @@ public class Controller {
 
     public void changeStudentInfo() {
         displayStudent();
+        scanner.nextLine();
         System.out.println("what id of student you want to change?");
         String idOfChange = scanner.nextLine();
         int isidExist = isidExist(idOfChange);
         while (isidExist == -1) {
             System.out.println("what id of student you want to change?");
+
             idOfChange = scanner.nextLine();
             isidExist = isidExist(idOfChange);
         }
@@ -278,27 +281,28 @@ public class Controller {
         int choiceChange = scanner.nextInt();
         switch (choiceChange) {
             case 1: {
+                scanner.nextLine();
                 System.out.println("new id:");
                 String newid = scanner.nextLine();
                 this.listStudentObject.get(isidExist).setid(newid);
                 break;
             }
             case 2: {
-
+                scanner.nextLine();
                 System.out.println("new full name:");
                 String newName = scanner.nextLine();
                 this.listStudentObject.get(isidExist).setFullName(newName);
                 break;
             }
             case 3: {
-
+                scanner.nextLine();
                 System.out.println("new mail:");
                 String newMail = scanner.nextLine();
                 this.listStudentObject.get(isidExist).setEmail(newMail);
                 break;
             }
             case 4: {
-
+                scanner.nextLine();
                 System.out.println("new score:");
                 int newScore = scanner.nextInt();
                 this.listStudentObject.get(isidExist).setScore(newScore);
@@ -313,9 +317,11 @@ public class Controller {
         displayStudent();
         System.out.println("what id of student you want to delete?");
         String idOfChange = scanner.nextLine();
+
         int isidExist = isidExist(idOfChange);
+        scanner.nextLine();
         while (isidExist == -1) {
-            System.out.println("what id of student you want to change?");
+            System.out.println("what id of student you want to delete?");
             idOfChange = scanner.nextLine();
             isidExist = isidExist(idOfChange);
         }
