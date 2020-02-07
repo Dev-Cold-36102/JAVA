@@ -1,6 +1,6 @@
 package TestExam;
 
-import TestExam1.Student;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,7 +20,7 @@ public class CreatStudentList {
 
     public LinkedList listStudent() {
         LinkedList listStudentInfo = new LinkedList();
-        LinkedList<TestExam1.Student> listStudentObject = new LinkedList<>();
+        LinkedList<Student> listStudentObject = new LinkedList<>();
         FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(this.srcStudentFile);
@@ -42,7 +42,7 @@ public class CreatStudentList {
             Matcher matcherStudenInfo = patternStudenInfo.matcher(matcherStudent.group(1));
             while (matcherStudenInfo.find()) {
 
-                TestExam1.Student student = new Student(matcherStudenInfo.group(1), matcherStudenInfo.group(2), matcherStudenInfo.group(3), Integer.parseInt(matcherStudenInfo.group(4)));
+               Student student = new Student(matcherStudenInfo.group(1), matcherStudenInfo.group(2), matcherStudenInfo.group(3), Integer.parseInt(matcherStudenInfo.group(4)));
                 listStudentObject.add(student);
             }
         }

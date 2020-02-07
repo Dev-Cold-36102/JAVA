@@ -73,7 +73,8 @@ public class Controller {
             case 12: {
                 sortByfullName();
                 break;
-            } case 13:{
+            }
+            case 13: {
                 displayStudent();
                 break;
             }
@@ -105,6 +106,7 @@ public class Controller {
     }
 
     public void displayByLimitScore() {
+        scanner.nextLine();
         System.out.print("enter the limit score: ");
         int limitScore = scanner.nextInt();
         System.out.printf("\n%-15s%-30s%-35s%-10s\n", "MA HV", "HO TEN", "EMAIL", "SCORE");
@@ -247,6 +249,7 @@ public class Controller {
     }
 
     public void addStudent() {
+        scanner.nextLine();
         System.out.print("enter the id of student:");
         String newid = scanner.nextLine();
         System.out.print("enter the name of student:");
@@ -329,6 +332,7 @@ public class Controller {
 
 
     public void searchStudentInfo() {
+        scanner.nextLine();
         System.out.println("what value you want to search?\n1.id\n2.Name\n3.Email\n4.Score");
         int choiceSearch = scanner.nextInt();
         switch (choiceSearch) {
@@ -353,7 +357,7 @@ public class Controller {
     }
 
     public void searchByid() {
-
+        scanner.nextLine();
         System.out.print("please enter the id: ");
         scanner.nextLine();
         String keyid = scanner.nextLine();
@@ -368,6 +372,7 @@ public class Controller {
     }
 
     public void searchByName() {
+        scanner.nextLine();
         System.out.print("please enter the name: ");
         scanner.nextLine();
         String keyName = scanner.nextLine();
@@ -385,6 +390,7 @@ public class Controller {
     }
 
     public void searchByMail() {
+        scanner.nextLine();
         System.out.print("please enter the email: ");
         scanner.nextLine();
         String keyMail = scanner.nextLine();
@@ -399,6 +405,7 @@ public class Controller {
     }
 
     public void searchByScore() {
+        scanner.nextLine();
         System.out.print("please enter the score: ");
         scanner.nextLine();
         int keyScore = scanner.nextInt();
