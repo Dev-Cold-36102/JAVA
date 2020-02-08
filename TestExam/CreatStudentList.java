@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 
 public class CreatStudentList {
     private File srcStudentFile;
-
     public CreatStudentList(String pathStudentFile) {
         File fileStudent = new File(pathStudentFile);
         this.srcStudentFile = fileStudent;
@@ -41,8 +40,7 @@ public class CreatStudentList {
             Pattern patternStudenInfo = Pattern.compile(regexStudenInfo);
             Matcher matcherStudenInfo = patternStudenInfo.matcher(matcherStudent.group(1));
             while (matcherStudenInfo.find()) {
-
-               Student student = new Student(matcherStudenInfo.group(1), matcherStudenInfo.group(2), matcherStudenInfo.group(3), Integer.parseInt(matcherStudenInfo.group(4)));
+                Student student = new Student(matcherStudenInfo.group(1), matcherStudenInfo.group(2), matcherStudenInfo.group(3), Integer.parseInt(matcherStudenInfo.group(4)));
                 listStudentObject.add(student);
             }
         }

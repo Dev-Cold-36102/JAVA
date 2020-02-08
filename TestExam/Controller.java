@@ -24,30 +24,37 @@ public class Controller {
         switch (choice) {
             case 1: {
                 searchStudentInfo();
+                showMenu();
                 break;
             }
             case 2: {
                 displayByLimitScore();
+                showMenu();
                 break;
             }
             case 3: {
                 displayNguyen();
+                showMenu();
                 break;
             }
             case 4: {
                 displayIncorrectid();
+                showMenu();
                 break;
             }
             case 5: {
                 sortByScore();
+                showMenu();
                 break;
             }
             case 6: {
                 exportScoreSortedFile();
+                showMenu();
                 break;
             }
             case 7: {
                 sortByName();
+                showMenu();
                 break;
             }
             case 8: {
@@ -56,22 +63,27 @@ public class Controller {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                showMenu();
                 break;
             }
             case 9: {
                 addStudent();
+                showMenu();
                 break;
             }
             case 10: {
                 changeStudentInfo();
+                showMenu();
                 break;
             }
             case 11: {
                 deleteStudent();
+                showMenu();
                 break;
             }
             case 12: {
                 sortByfullName();
+                showMenu();
                 break;
             }
             case 13: {
@@ -79,9 +91,7 @@ public class Controller {
                 showMenu();
                 break;
             }
-
         }
-
     }
 
     public void displayStudent() {
@@ -92,7 +102,6 @@ public class Controller {
             this.listStudentObject.get(i).displayStudent();
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------");
-
     }
 
     public void sortByScore() {
@@ -103,7 +112,6 @@ public class Controller {
             }
         });
         displayStudent();
-        showMenu();
     }
 
     public void displayByLimitScore() {
@@ -116,15 +124,16 @@ public class Controller {
                 this.listStudentObject.get(i).displayStudent();
             }
         }
-        showMenu();
     }
 
     public void exportScoreSortedFile() {
+        scanner.nextLine();
         sortByScore();
-        File fileSortedStudent;
+        File fileSortedStudent = null;
         do {
-            System.out.print("enter the fullName of file: ");
-            String FILEfullName = scanner.nextLine() + ".txt";
+            System.out.print("enter the name of file: ");
+            String FILEfullName = scanner.nextLine();
+            FILEfullName += ".txt";
             fileSortedStudent = new File(FILEfullName);
             if (!fileSortedStudent.exists()) {
                 try {
@@ -147,7 +156,6 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        showMenu();
     }
 
     public void sortByfullName() {
@@ -157,11 +165,10 @@ public class Controller {
                 return (student1.getfullName().compareTo(student2.getfullName()));
             }
         });
-        showMenu();
+        displayStudent();
     }
 
     public void sortByName() {
-
         for (int i = 0; i < this.listStudentObject.size(); i++) {
             String[] elementOfFullName = this.listStudentObject.get(i).getfullName().split("\\s");
             String reverseName = elementOfFullName[elementOfFullName.length - 1];
@@ -181,8 +188,7 @@ public class Controller {
             realFullName += elementOfReverseName[0];
             this.listStudentObject.get(i).setFullName(realFullName);
         }
-//        displayStudent();
-        showMenu();
+        displayStudent();
     }
 
     public void displayIncorrectid() {
@@ -205,7 +211,6 @@ public class Controller {
                 incorrectidList.get(i).displayStudent();
             }
         }
-        showMenu();
     }
 
     public void displayNguyen() {
@@ -228,7 +233,6 @@ public class Controller {
                 listNguyen.get(i).displayStudent();
             }
         }
-        showMenu();
     }
 
     public void exportNameSortedFile() throws IOException {
@@ -246,7 +250,7 @@ public class Controller {
         } finally {
             oos.close();
         }
-        showMenu();
+
     }
 
     public void addStudent() {
@@ -262,7 +266,6 @@ public class Controller {
         Student newStudent = new Student(newid, newName, newEmail, newScore);
         this.listStudentObject.add(newStudent);
         writeFileStudent();
-        showMenu();
     }
 
     public void changeStudentInfo() {
@@ -310,16 +313,15 @@ public class Controller {
             }
         }
         writeFileStudent();
-        showMenu();
     }
 
     public void deleteStudent() {
+        scanner.nextLine();
         displayStudent();
         System.out.println("what id of student you want to delete?");
         String idOfChange = scanner.nextLine();
 
         int isidExist = isidExist(idOfChange);
-        scanner.nextLine();
         while (isidExist == -1) {
             System.out.println("what id of student you want to delete?");
             idOfChange = scanner.nextLine();
@@ -331,9 +333,9 @@ public class Controller {
             this.listStudentObject.remove(isidExist);
             writeFileStudent();
         } else if (submitDelete.equals(String.valueOf('n'))) {
-            showMenu();
-        }
 
+        }
+        writeFileStudent();
     }
 
 
@@ -343,18 +345,22 @@ public class Controller {
         int choiceSearch = scanner.nextInt();
         switch (choiceSearch) {
             case 1: {
+                scanner.nextLine();
                 searchByid();
                 break;
             }
             case 2: {
+                scanner.nextLine();
                 searchByName();
                 break;
             }
             case 3: {
+                scanner.nextLine();
                 searchByMail();
                 break;
             }
             case 4: {
+                scanner.nextLine();
                 searchByScore();
                 break;
             }
@@ -363,9 +369,7 @@ public class Controller {
     }
 
     public void searchByid() {
-
         System.out.print("please enter the id: ");
-        scanner.nextLine();
         String keyid = scanner.nextLine();
         int isidExist = isidExist(keyid);
         if (isidExist == -1) {
@@ -378,9 +382,7 @@ public class Controller {
     }
 
     public void searchByName() {
-
         System.out.print("please enter the name: ");
-        scanner.nextLine();
         String keyName = scanner.nextLine();
         ArrayList<Integer> indexOfName = isNameExist(keyName);
         if (indexOfName.size() == 0) {
@@ -396,9 +398,7 @@ public class Controller {
     }
 
     public void searchByMail() {
-
         System.out.print("please enter the email: ");
-        scanner.nextLine();
         String keyMail = scanner.nextLine();
         int isMailExist = isMailExist(keyMail);
         if (isMailExist == -1) {
@@ -412,7 +412,6 @@ public class Controller {
 
     public void searchByScore() {
         System.out.print("please enter the score: ");
-        scanner.nextLine();
         int keyScore = scanner.nextInt();
         ArrayList<Integer> indexOfScore = new ArrayList<>();
         indexOfScore = isScoreExist(keyScore);
@@ -441,7 +440,7 @@ public class Controller {
     public ArrayList<Integer> isNameExist(String keyName) {
         ArrayList<Integer> indexOfName = new ArrayList<>();
         for (int i = 0; i < this.listStudentObject.size(); i++) {
-            if (this.listStudentObject.get(i).getid().equals(keyName)) {
+            if (this.listStudentObject.get(i).getfullName().equals(keyName)) {
                 indexOfName.add(i);
             }
         }
@@ -450,7 +449,7 @@ public class Controller {
 
     public int isMailExist(String keyMail) {
         for (int i = 0; i < this.listStudentObject.size(); i++) {
-            if (this.listStudentObject.get(i).getid().equals(keyMail)) {
+            if (this.listStudentObject.get(i).getEmail().equals(keyMail)) {
                 return i;
             }
         }
@@ -460,7 +459,7 @@ public class Controller {
     public ArrayList<Integer> isScoreExist(int keyScore) {
         ArrayList<Integer> indexOfScore = new ArrayList<>();
         for (int i = 0; i < this.listStudentObject.size(); i++) {
-            if (this.listStudentObject.get(i).getid().equals(keyScore)) {
+            if (this.listStudentObject.get(i).getScore() == keyScore) {
                 indexOfScore.add(i);
             }
         }
